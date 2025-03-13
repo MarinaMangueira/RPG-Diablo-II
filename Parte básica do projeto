@@ -1,0 +1,423 @@
+package projeto_unidade1;
+
+import java.util.Scanner; 
+import java.util.Random;
+
+public class RPG_diabloII {
+	public static void main(String args[]) {
+		Scanner leitor = new Scanner(System.in);
+		
+        // Variáveis para a criação do personagem
+        String nome;
+        char classe;
+        String classe_escolhida;
+        String hab1, hab2;
+        int vida = 20;
+        int mana = 5;
+
+        // Variáveis para interações em Tristam (cidade inicial)
+        String interacao_inicial;
+        String conversar_Akara;
+        String resposta_mercador;
+        String resposta_Akara;
+
+        // Informações do personagem
+        System.out.print("Informe o nome do seu personagem: ");
+        nome = leitor.nextLine();
+
+        System.out.println("\nEscolha sua classe:");
+        System.out.println("  N - Necromante");
+        System.out.println("  A - Amazonas");
+        System.out.println("  B - Bárbaro");
+        System.out.println("  F - Feiticeira");
+        System.out.println("  P - Paladino");
+        System.out.print("\nInforme a letra correspondente: ");
+        classe = Character.toUpperCase(leitor.nextLine().charAt(0));
+
+        switch (classe) {
+            case 'N': classe_escolhida = "Necromante"; break;
+            case 'A': classe_escolhida = "Amazonas"; break;
+            case 'B': classe_escolhida = "Bárbaro"; break;
+            case 'F': classe_escolhida = "Feiticeira"; break;
+            case 'P': classe_escolhida = "Paladino"; break;
+            default: classe_escolhida = "Classe inválida"; break;
+        }
+
+        if (classe_escolhida.equals("Necromante")) {
+            hab1 = "Ataque básico (ataca com o cajado)";
+            hab2 = "Explosão cadavérica (explode os cadáveres que estão no chão)";
+        } 
+        else if (classe_escolhida.equals("Amazonas")) {
+            hab1 = "Ataque básico (ataca com a lança)";
+            hab2 = "Barragem (atira várias flechas ao mesmo tempo)";
+        } 
+        else if (classe_escolhida.equals("Bárbaro")) {
+            hab1 = "Ataque básico (ataca com o machado)";
+            hab2 = "Ataque giratório (ataque em área ao redor)";
+        } 
+        else if (classe_escolhida.equals("Feiticeira")) {
+            hab1 = "Ataque básico (ataca com o cajado)";
+            hab2 = "Raios (dispara raios nos inimigos)";
+        } 
+        else if (classe_escolhida.equals("Paladino")) {
+            hab1 = "Ataque básico (ataca com a espada)";
+            hab2 = "Martelo sagrado (joga o martelo com uma aura de luz no inimigo)";
+        } 
+        else {
+            hab1 = "Nenhuma";
+            hab2 = "Nenhuma";
+            System.out.println("\nClasse inválida.");
+        }
+
+        System.out.println("\n--------------------");
+        System.out.println("     PERSONAGEM      ");
+        System.out.println("--------------------");
+        System.out.println(" Nome   : " + nome);
+        System.out.println(" Classe : " + classe_escolhida);
+        System.out.println(" Vida   : " + vida);
+        System.out.println(" Mana   : " + mana);
+        System.out.println(" Habilidade 1: " + hab1);
+        System.out.println(" Habilidade 2: " + hab2);
+        System.out.println("--------------------\n");
+
+        // Criação do personagem concluída
+        
+        // Chegada a Tristam
+        System.out.println("Você chegou em Tristam, a cidade desolada.");
+        System.out.println("A cidade está silenciosa e sombria, apenas algumas sombras se movem.");
+        System.out.println("Você está seguro... por enquanto.");
+
+        System.out.println("\nUm velho mercador se aproxima e diz:");
+        System.out.println("'O mal está por toda parte. O que você deseja saber?'");
+
+        System.out.println("\n Digite 'historia' para ouvir a história de Diablo.");
+        System.out.println(" Digite 'missao' para pegar uma missão.");
+        System.out.println(" Digite 'sair' para sair da cidade.");
+
+        interacao_inicial = leitor.nextLine().toLowerCase();
+
+        if (interacao_inicial.equals("historia")) {
+            System.out.println("\nAh, viajante, você deseja ouvir a história do mal que assola estas terras? Então escute bem…");
+            System.out.println("Há muitos anos, o Senhor do Terror, Diablo, corrompeu o rei de Khanduras e lançou Tristam na");
+            System.out.println("escuridão. Um bravo herói desceu às profundezas da catedral e derrotou o demônio, mas… sua vitória");
+            System.out.println("foi uma maldição. Ao tentar conter Diablo dentro de si, ele próprio sucumbiu à corrupção. Agora, como");
+            System.out.println("o Errante Sombrio, ele espalha destruição por onde passa, libertando seus irmãos, Mephisto e Baal. O");
+            System.out.println("mal cresce, viajante… e temo que logo todos nós conheceremos o verdadeiro terror.");
+            System.out.println("\nDiablo foi derrotado, mas sua maldade nunca desapareceu completamente. Agora, o mal se espalha");
+            System.out.println("como uma sombra pela terra, e as criaturas da escuridão começam a tomar o controle. A sacerdotisa");
+            System.out.println("Akara, que sente o chamado da escuridão, espera por você na vila de Rogue, perto do Den of Evil. Ela");
+            System.out.println("acredita que, ao destruir a fonte dessa corrupção, você dará um passo importante na luta contra o caos.");
+            System.out.println("Vá até lá, vença as criaturas do mal e traga a luz de volta à terra. O destino da humanidade está em");
+            System.out.println("suas mãos.");
+
+            System.out.println("\nAgora você pode conversar com Akara.");
+            System.out.println("Digite 'ir' para ir até Akara ou 'sair' para deixar a cidade.");
+            conversar_Akara = leitor.nextLine().toLowerCase();
+
+            if (conversar_Akara.equals("ir")) {
+                System.out.println("\nVocê decide ir até Akara.");
+                System.out.println("\nAkara: 'Eu senti o poder da escuridão se aproximando. Você está pronto para enfrentar o Den of Evil?'");
+                System.out.println("Akara: 'A missão é simples, mas o percurso será difícil. Você aceitará a missão e enfrentará as criaturas do mal?'");
+                System.out.println("Digite 'aceitar' para aceitar a missão ou 'recusar' para sair da cidade.");
+                resposta_Akara = leitor.nextLine().toLowerCase();
+
+                if (resposta_Akara.equals("aceitar")) {
+                    System.out.println("\nVocê aceitou a missão!"); 
+                    System.out.println("Vá até o Blood Moor e encontre o Den of Evil. Purifique o local de todo o mal.");
+                    procurar_caverna();
+                } 
+                else {
+                    System.out.println("\nVocê recusou a missão.");
+                    System.out.println("Akara compreende, mas sabe que o mal não ficará parado por muito tempo.");
+                }
+            } 
+            else {
+                System.out.println("\nVocê decidiu sair da cidade. A escuridão permanece, mas a decisão é sua.");
+            }
+        } 
+        
+        else if (interacao_inicial.equals("missao")) {
+            System.out.println("\nVocê vai direto até Akara.");
+            System.out.println("\nAkara: 'Eu senti o poder da escuridão se aproximando. Você está pronto para enfrentar o Den of Evil?'");
+            System.out.println("Akara: 'A missão é simples, mas a luta será difícil. Você aceitará a missão e enfrentará as criaturas do mal?'");
+            System.out.println("Digite 'aceitar' para aceitar a missão ou 'recusar' para sair da cidade.");
+            resposta_Akara = leitor.nextLine().toLowerCase();
+
+            if (resposta_Akara.equals("aceitar")) {
+                System.out.println("\nVocê aceitou a missão! Vá até o Den of Evil e purifique o local.");
+                procurar_caverna();
+            } 
+            else {
+                System.out.println("\nVocê recusou a missão. Akara compreende, mas sabe que o mal não ficará parado por muito tempo.");
+            }
+        } 
+        
+        else {
+            System.out.println("\nViajante, ao deixar Tristam, lembre-se: a escuridão que assola esta cidade pode estar à espreita em");
+            System.out.println("cada canto, mas é em sua coragem que reside a esperança. Que os ventos do destino o guiem.");
+        }
+    }
+		
+	// Função para procurar a caverna no Blood Moor
+    public static void procurar_caverna() {
+        Random rand = new Random();
+        Scanner leitor = new Scanner(System.in);
+        
+        // Declaração das variáveis do Random
+        int local_caverna = rand.nextInt(5) + 1; // A caverna pode estar entre os 5 locais possíveis
+        int local_atual;
+        
+        // Declaração das variáveis do Scanner
+        String resposta_retorno;
+        
+        System.out.println("\nVocê começa a procurar o Den of Evil no Blood Moor...");
+
+        for (int tentativa = 1; tentativa <= 5; tentativa++) {
+            System.out.println("\nTentativa " + tentativa + ": Você está explorando...");
+            local_atual = rand.nextInt(5) + 1;
+
+            if (local_atual == local_caverna) {
+                System.out.println("\nVocê encontrou o Den of Evil!");
+                System.out.println("Deseja entrar na caverna? (digite 'entrar' ou 'continuar explorando')");
+                String escolha = leitor.nextLine().toLowerCase();
+                if (escolha.equals("entrar")) {
+                    System.out.println("\nVocê entra na caverna para enfrentar as forças do mal.");
+                    lutar();
+                    return;
+                } else {
+                    System.out.println("\nVocê decide continuar explorando...");
+                }
+            } else {
+                System.out.println("A caverna não está aqui. Continue procurando...");
+            }
+        }
+
+        System.out.println("\nVocê não conseguiu encontrar o Den of Evil após várias tentativas.");
+        System.out.println("O mal ainda permanece à espreita.");
+        System.out.println("Você deseja retornar a Tristam para começar sua busca novamente? ");
+        System.out.println("Digite 'sim' para retornar a Tristam");
+        resposta_retorno = leitor.nextLine().toLowerCase();
+        
+        if (resposta_retorno.equals("sim")) {
+            System.out.println("\nVocê retorna para Tristam para tentar novamente.");
+            System.out.println("Você conversa com Akara:");
+
+            System.out.println("\nAkara: 'Você não encontrou o Den of Evil ainda? O mal cresce cada vez mais. Não podemos perder tempo!'");
+
+            System.out.println("\nAkara: 'Vá novamente até o Blood Moor. Eu sei que você conseguirá encontrar a caverna e derrotar as criaturas do mal.'");
+            System.out.println("\nAkara: 'O destino da terra está em suas mãos. Não desista!'");
+
+            // Chamada recursiva para o personagem tentar procurar a caverna novamente
+            procurar_caverna();
+        } 
+        else {
+            System.out.println("\nVocê decide não retornar para Tristam. O mal continua à espreita, aguardando sua decisão.");
+        }
+    }
+        
+        public static void lutar() {
+	        Random rand = new Random();
+	        Scanner leitor = new Scanner(System.in);
+	        
+	        // Vida dos demônios
+	        int vida_demonio1 = 5;
+	        int vida_demonio2 = 10;
+	        int vida_demonio3 = 15;
+	        
+	        // Variáveis do jogador
+	        int vida_player = 20;
+	        int mana_player = 5;
+	        int dano_player;
+	        int dano_inimigo;
+	        
+	        System.out.println("\nVocê entra na caverna, e imediatamente sente o peso das sombras ao seu redor. ");
+	        System.out.println(" As forças do mal se aproximam, prontas para testar sua coragem. ");
+	        System.out.println("Servos de Diablo surgem diante de você, suas figuras deformadas e ameaçadoras bloqueando sua passagem, ");
+	        System.out.println("determinadas a apagar sua existência.\n");
+	        System.out.println("O combate começa! ");
+	        for (int luta = 1; luta <= 3; luta++) {
+	            int vida_inimigo;
+	            if (luta == 1) {
+	                vida_inimigo = vida_demonio1;
+	                System.out.println("\nVocê está enfrentando o 1º DEMÔNIO!");
+	            } else if (luta == 2) {
+	                vida_inimigo = vida_demonio2;
+	                System.out.println("\nVocê está enfrentando o 2º DEMÔNIO!");
+	            } else {
+	                vida_inimigo = vida_demonio3;
+	                System.out.println("\nVocê está enfrentando o 3º DEMÔNIO!");
+	            }
+	            
+	            while (vida_player > 0 && vida_inimigo > 0) {
+	                System.out.println("\n--------------------");
+	                System.out.println("    PERSONAGEM    ");
+	                System.out.println("Vida: " + vida_player + " | Mana: " + mana_player);
+	                System.out.println("     DEMÔNIO " + luta);
+	                System.out.println("Vida: " + vida_inimigo);
+	                System.out.println("--------------------");
+	                
+	                System.out.println("\nEscolha sua ação:");
+	                System.out.println("1. Usar o ataque básico (custo: 0 de mana)");
+	                System.out.println("2. Usar o ataque especial (custo: 1 de mana)");
+	                System.out.println("3. Fugir para Tristam");
+	                System.out.print("\nDigite sua escolha: ");
+	                
+	                int acao = leitor.nextInt();
+	                
+	                if (acao == 1) {
+	                    System.out.println("Você utilizou o ataque básico!");
+	                    dano_player = rand.nextInt(3) + 2; // dano
+	                    vida_inimigo -= dano_player;
+	                    System.out.println("Você causou " + dano_player + " de dano.");
+	                } 
+	                else if (acao == 2) {
+	                    if (mana_player >= 1) {
+	                        System.out.println("Você utilizou o ataque especial!");
+	                        dano_player = rand.nextInt(4) + 3; // dano
+	                        mana_player -= 1;
+	                        vida_inimigo -= dano_player;
+	                        System.out.println("Você causou " + dano_player + " de dano.");
+	                    } else {
+	                        System.out.println("Mana insuficiente para o ataque especial!");
+	                    }
+	                } 
+	                else {
+	                    System.out.println("Você foge da batalha e retorna para Tristam!");
+	                    return;
+	                }
+	                
+	                // Ataque do inimigo
+	                if (vida_inimigo > 0) {
+	                    dano_inimigo = rand.nextInt(3) + 1; // dano
+	                    vida_player -= dano_inimigo;
+	                    System.out.println("O demônio te ataca e causa " + dano_inimigo + " de dano.");
+	                }
+	            }
+	            
+	            // Fim da batalha
+	            if (vida_player > 0) {
+	                System.out.println("\nVocê derrotou o " + luta + "º DEMÔNIO!");
+	            } else {
+	                System.out.println("\nVocê foi derrotado! O mal ainda reina sobre essas terras...");
+	                return;
+	            }
+	        }
+	        
+	        System.out.println("\nVocê derrotou todos os demônios e purificou o Den of Evil!");
+	        System.out.println("Agora você deve retornar a Tristam e falar com Akara, para completar a missão.");
+	        System.out.println("Digite 'retornar' para retornar a Tristam e 'explorar' para continuar explorando Den of Evil:");
+	        String decisao = leitor.nextLine();
+	        
+	        decisao = leitor.nextLine().toLowerCase();
+	        
+	        if (decisao.equals("retornar")) {
+	            System.out.println("\nVocê retorna a Tristam e vai diretamente ao encontro de Akara.");
+	            System.out.println("Akara: 'Vejo que você conseguiu purificar o Den of Evil! A luz voltou a brilhar sobre essas terras.'");
+	            System.out.println("Akara: 'Essa foi apenas a primeira batalha. Há muito mais pela frente, Diablo ainda tem muito poder e domínio.'");
+	            System.out.println("\nAkara lhe concede uma recompensa por sua bravura.");
+	            System.out.println("Você recebeu: 10 pontos de vida, 5 pontos de mana e 50 moedas de ouro!");
+	            
+	            // Atualizando os atributos do jogador
+	            int nova_vida = 30; 
+	            int nova_mana = 10; 
+	            int ouro = 50; 
+	            
+	            System.out.println("\n--------------------");
+	            System.out.println(" STATUS ATUALIZADO     ");
+	            System.out.println("--------------------");
+	            System.out.println(" Vida   : " + nova_vida);
+	            System.out.println(" Mana   : " + nova_mana);
+	            System.out.println(" Ouro   : " + ouro);
+	            System.out.println("--------------------\n");
+	            
+	        }
+	        else {
+	        	System.out.println("Você resolve continuar explorando Den of Evil, mas cuidado o mal ainda está presente...");
+	        }
+	        
+	     // Variáveis de dinheiro e inventário
+	        int moeda = 50;
+	        String[][] inventario = new String[10][2]; // [][0] -> nome do item, [][1] -> preço
+	        int numero_itens = 0;
+
+	        System.out.println("\nApós completar a missão 'Den of Evil', você sente uma presença estranha, como se estivesse sendo observado.");
+	        System.out.println("Com cautela, você se vira para as sombras, e lá, pairando na escuridão, estão dois olhos brilhando fixamente em você.");
+	        System.out.println("Você se aproxima, os olhos não se movem.");
+	        System.out.println("Então, a figura misteriosa dá um passo à frente, e você percebe que é o Mercador.");
+
+	        System.out.println("\nO mercador se aproxima de você...");
+	        System.out.println("Mercador: 'Eu tenho alguns itens para vender, talvez você precise deles nas próximas batalhas.'");
+	        System.out.println("Ele oferece poções e outros itens...");
+
+	        // Chama a função para comprar itens
+	        comprar_itens(leitor, inventario, numero_itens, moeda);
+	    }
+
+	    // Função de compra de itens
+	    public static void comprar_itens(Scanner leitor, String[][] inventario, int numero_itens, int moeda) {
+	        String escolha;
+
+	        // Loop para as compras
+	        do {
+	            System.out.println("\nMercador: 'Eu tenho alguns itens para vender.'");
+	            System.out.println("Itens disponíveis para compra:");
+	            System.out.println("1 - Poção de Vida (10 moedas de ouro)"); 
+	            System.out.println("2 - Poção de Mana (5 moedas de ouro)");
+
+	            System.out.print("\nEscolha o número do item que deseja comprar ou 'sair' para cancelar: ");
+	            escolha = leitor.nextLine().toLowerCase();
+
+	            // Lógica de compra
+	            if (escolha.equals("1")) {
+	                if (moeda >= 10) {
+	                    if (numero_itens < inventario.length) {
+	                        inventario[numero_itens][0] = "Poção de Vida";
+	                        inventario[numero_itens][1] = "10";
+	                        numero_itens++;
+	                        moeda -= 10;
+	                        System.out.println("\nVocê comprou uma Poção de Vida!");
+	                    } else {
+	                        System.out.println("\nSeu inventário está cheio!");
+	                    }
+	                } else {
+	                    System.out.println("\nVocê não tem dinheiro suficiente para comprar a Poção de Vida.");
+	                }
+	            } 
+	            else if (escolha.equals("2")) {
+	                if (moeda >= 5) {
+	                    if (numero_itens < inventario.length) {
+	                        inventario[numero_itens][0] = "Poção de Mana";
+	                        inventario[numero_itens][1] = "5";
+	                        numero_itens++;
+	                        moeda -= 5;
+	                        System.out.println("\nVocê comprou uma Poção de Mana!");
+	                    } else {
+	                        System.out.println("\nSeu inventário está cheio!");
+	                    }
+	                } else {
+	                    System.out.println("\nVocê não tem dinheiro suficiente para comprar a Poção de Mana.");
+	                }
+	            } 
+	            else if (escolha.equals("sair")) {
+	                System.out.println("\nVocê decidiu sair da loja.");
+	            } 
+	            else {
+	                System.out.println("\nOpção inválida.");
+	            }
+
+	            // Mostra o inventário
+	            System.out.println("\nSeu inventário agora contém:");
+	            for (int i = 0; i < numero_itens; i++) {
+	                System.out.println("- " + inventario[i][0] + " (Preço: " + inventario[i][1] + ")");
+	            }
+
+	            System.out.println("Você tem " + moeda + " moedas restantes.");
+
+	        } while (moeda > 0 && !escolha.equals("sair"));
+
+	        System.out.println("\nCom o coração leve e o espírito renovado, você segue em direção ao desconhecido. O que o próximo capítulo de sua jornada lhe reserva?");
+	        System.out.println("Novos desafios, novas conquistas aguardam por você.");
+	        System.out.println("\n\n TO BE CONTINUED -->");
+
+	    }
+	}
