@@ -1,0 +1,61 @@
+package projeto_unidade1;
+
+class Player {
+    String nome;
+    String classe;
+    String hab1;
+    String hab2;
+    int vida = 20;
+    int mana = 5;
+
+    public Player(String nome) {
+        this.nome = nome;
+    }	
+
+    public void escolher_classe(char classe) {
+        switch (Character.toUpperCase(classe)) {
+            case 'N':
+                this.classe = "Necromante";
+                this.hab1 = "Ataque básico (ataca com o cajado)";
+                this.hab2 = "Explosão cadavérica (explode os cadáveres que estão no chão)";
+                break;
+            case 'A':
+                this.classe = "Amazonas";
+                this.hab1 = "Ataque básico (ataca com a lança)";
+                this.hab2 = "Barragem (atira várias flechas ao mesmo tempo)";
+                break;
+            case 'B':
+                this.classe = "Bárbaro";
+                this.hab1 = "Ataque básico (ataca com o machado)";
+                this.hab2 = "Ataque giratório (ataque em área ao redor)";
+                break;
+            case 'F':
+                this.classe = "Feiticeira";
+                this.hab1 = "Ataque básico (ataca com o cajado)";
+                this.hab2 = "Raios (dispara raios nos inimigos)";
+                break;
+            case 'P':
+                this.classe = "Paladino";
+                this.hab1 = "Ataque básico (ataca com a espada)";
+                this.hab2 = "Martelo sagrado (joga o martelo com uma aura de luz no inimigo)";
+                break;
+            default:
+                this.classe = "Classe inválida";
+                this.hab1 = "Nenhuma";
+                this.hab2 = "Nenhuma";
+        }
+    }
+
+    public void exibir_player() {
+        System.out.println("\n--------------------");
+        System.out.println("     PERSONAGEM      ");
+        System.out.println("--------------------");
+        System.out.println(" Nome   : " + nome);
+        System.out.println(" Classe : " + classe);
+        System.out.println(" Vida   : " + vida);
+        System.out.println(" Mana   : " + mana);
+        System.out.println(" Habilidade 1: " + hab1);
+        System.out.println(" Habilidade 2: " + hab2);
+        System.out.println("--------------------\n");
+    }
+}
