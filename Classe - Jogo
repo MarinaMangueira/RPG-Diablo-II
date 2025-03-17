@@ -24,16 +24,17 @@ class Jogo {
 		
 		Player player = new Player(nome);
 		System.out.println("\nEscolha sua classe:");
-	    System.out.println("  N - Necromante");
-	    System.out.println("  A - Amazonas");
-	    System.out.println("  B - Bárbaro");
-	    System.out.println("  F - Feiticeira");
-	    System.out.println("  P - Paladino");
+	    System.out.println(" N - Necromante");
+	    System.out.println(" A - Amazonas");
+	    System.out.println(" B - Bárbaro");
+	    System.out.println(" F - Feiticeira");
+	    System.out.println(" P - Paladino");
 	    System.out.print("\nInforme a letra correspondente: ");
 	    classe = Character.toUpperCase(leitor.nextLine().charAt(0));
 		player.escolher_classe(classe);
 		player.exibir_player();
 		return player;
+		
 	}
 	
 	public void chegada_tristam() {
@@ -172,6 +173,7 @@ class Jogo {
             }
         }
         
+        // Método para a luta
         public static void lutar(Scanner leitor) {
 	        Random rand = new Random();
 	        
@@ -191,7 +193,7 @@ class Jogo {
 	        System.out.println("Servos de Diablo surgem diante de você, suas figuras deformadas e ameaçadoras bloqueando sua passagem, ");
 	        System.out.println("determinadas a apagar sua existência.\n");
 	        System.out.println("O combate começa! ");
-	        for (int luta = 1; luta <= 3; luta++) {
+	        for (int luta = 1; luta <= 3; luta++) { // luta com 3 demônios
 	            int vida_inimigo;
 	            if (luta == 1) {
 	                vida_inimigo = vida_demonio1;
@@ -321,7 +323,7 @@ class Jogo {
 	            System.out.println("1 - Poção de Vida (10 moedas de ouro)"); 
 	            System.out.println("2 - Poção de Mana (5 moedas de ouro)");
 
-	            System.out.print("\nEscolha o número do item que deseja comprar ou 'encerrar' para cancelar: ");
+	            System.out.println("\nEscolha o número do item que deseja comprar ou 'encerrar' para cancelar: ");
 	            escolha = leitor.nextLine().toLowerCase();
 
 	            // Lógica de compra
@@ -372,9 +374,10 @@ class Jogo {
 
 	        } while (moeda > 0 && !escolha.equalsIgnoreCase("encerrar"));
 
+	        // FIM
 	        System.out.println("\nCom o coração leve e o espírito renovado, você segue em direção ao desconhecido. O que o próximo capítulo de sua jornada lhe reserva?");
 	        System.out.println("Novos desafios, novas conquistas aguardam por você.");
-	        System.out.println("\n\nTO BE CONTINUED -->");
+	        System.out.println("\n\n TO BE CONTINUED -->");
 	}
 	    public void iniciar_jogo() {
 	    	criar_personagem();
