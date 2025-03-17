@@ -32,6 +32,7 @@ class Jogo {
 	    System.out.print("\nInforme a letra correspondente: ");
 	    classe = Character.toUpperCase(leitor.nextLine().charAt(0));
 		player.escolher_classe(classe);
+		player.exibir_player();
 		return player;
 	}
 	
