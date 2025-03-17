@@ -1,0 +1,12 @@
+package projeto_unidade1;
+
+import projeto_unidade1.Jogo;
+
+public class Main {
+	public static void main(String args[]) {
+		Jogo jogo = new Jogo();
+		
+		jogo.iniciar_jogo();
+		
+	}
+}
