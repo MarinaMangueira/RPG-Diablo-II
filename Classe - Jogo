@@ -1,14 +1,14 @@
-package projeto_unidade1;
+package projeto_unidade1_RPG_diablo;
 
-import java.util.Random;
+import java.util.Random; // Biblioteca usada para gerar números aleatórios
 import java.util.Scanner;
 
 class Jogo {
-	Scanner leitor = new Scanner(System.in);
+	public static Scanner leitor = new Scanner(System.in);
 	
 	// Variáveis de dinheiro e inventário
     int moeda = 50;
-    String[][] inventario = new String[10][2]; // [][0] -> nome do item, [][1] -> preço
+    String[][] inventario = new String[10][2]; // [i][0] -> nome do item, [i][1] -> preço
     int numero_itens = 0;
 	
 	public Jogo() {
@@ -22,7 +22,8 @@ class Jogo {
 		System.out.print("Informe o nome do seu personagem: ");
 		nome = leitor.nextLine();
 		
-		Player player = new Player(nome);
+		Player player = new Player(nome); 
+		
 		System.out.println("\nEscolha sua classe:");
 	    System.out.println(" N - Necromante");
 	    System.out.println(" A - Amazonas");
@@ -31,14 +32,18 @@ class Jogo {
 	    System.out.println(" P - Paladino");
 	    System.out.print("\nInforme a letra correspondente: ");
 	    classe = Character.toUpperCase(leitor.nextLine().charAt(0));
-		player.escolher_classe(classe);
-		player.exibir_player();
+		player.escolher_classe(classe); // chama o método escolher_classe
+		player.exibir_player(); // método para exibir as informações do personagem
 		return player;
+		
+		// definição da classe do personagem concluída 
 		
 	}
 	
 	public void chegada_tristam() {
 		// Chegada a Tristam
+		
+		// Variáveis que serão usadas para as interações
 		String interacao_inicial;
         String conversar_Akara;
         String resposta_Akara;
@@ -84,7 +89,7 @@ class Jogo {
                 if (resposta_Akara.equals("aceitar")) {
                     System.out.println("\nVocê aceitou a missão!"); 
                     System.out.println("Vá até o Blood Moor e encontre o Den of Evil. Purifique o local de todo o mal.");
-                    procurar_caverna(leitor);
+                    procurar_caverna();
                 } 
                 else {
                     System.out.println("\nVocê recusou a missão.");
@@ -105,7 +110,7 @@ class Jogo {
 
             if (resposta_Akara.equals("aceitar")) {
                 System.out.println("\nVocê aceitou a missão! Vá até o Den of Evil e purifique o local.");
-                procurar_caverna(leitor);
+                procurar_caverna();
             } 
             else {
                 System.out.println("\nVocê recusou a missão. Akara compreende, mas sabe que o mal não ficará parado por muito tempo.");
@@ -117,8 +122,9 @@ class Jogo {
             System.out.println("cada canto, mas é em sua coragem que reside a esperança. Que os ventos do destino o guiem.");
         }
 	}
-     // Função para procurar a caverna no Blood Moor
-        public static void procurar_caverna(Scanner leitor) {
+
+		// Método para procurar a caverna
+        public static void procurar_caverna() {
             Random rand = new Random();
             
             // Declaração das variáveis do Random
@@ -140,7 +146,7 @@ class Jogo {
                     String escolha = leitor.nextLine().toLowerCase();
                     if (escolha.equals("entrar")) {
                         System.out.println("\nVocê entra na caverna para enfrentar as forças do mal.");
-                        lutar(leitor);
+                        lutar();
                         return;
                     } else {
                         System.out.println("\nVocê decide continuar explorando...");
@@ -165,16 +171,16 @@ class Jogo {
                 System.out.println("\nAkara: 'Vá novamente até o Blood Moor. Eu sei que você conseguirá encontrar a caverna e derrotar as criaturas do mal.'");
                 System.out.println("\nAkara: 'O destino da terra está em suas mãos. Não desista!'");
 
-                // Chamada recursiva para o personagem tentar procurar a caverna novamente
-                procurar_caverna(leitor);
+                // Nova tentativa de procurar a caverna
+                procurar_caverna();
             } 
             else {
-                System.out.println("\nVocê decide não retornar para Tristam. O mal continua à espreita, aguardando sua decisão.");
+                System.out.println("\nVocê decide não retornar por hora para Tristam. O mal continua à espreita, aguardando sua decisão.");
             }
         }
         
-        // Método para a luta
-        public static void lutar(Scanner leitor) {
+       // Método da luta
+        public static void lutar() {
 	        Random rand = new Random();
 	        
 	        // Vida dos demônios
@@ -222,6 +228,7 @@ class Jogo {
 	                
 	                int acao = leitor.nextInt();
 	                
+	                // Ataque do jogador 
 	                if (acao == 1) {
 	                    System.out.println("Você utilizou o ataque básico!");
 	                    dano_player = rand.nextInt(3) + 2; // dano
@@ -291,12 +298,18 @@ class Jogo {
 	        }
 	        else {
 	        	System.out.println("Você resolve continuar explorando Den of Evil, mas cuidado o mal ainda está presente...");
+	        	System.out.println("\nApós olhar em cada canto da caverna, você resolve retornar a Akara para contar o ocorrido.");
+	            System.out.println("\nVocê retorna a Tristam e vai diretamente ao encontro de Akara.");
+	            System.out.println("Akara: 'Vejo que você conseguiu purificar o Den of Evil! A luz voltou a brilhar sobre essas terras.'");
+	            System.out.println("Akara: 'Essa foi apenas a primeira batalha. Há muito mais pela frente, Diablo ainda tem muito poder e domínio.'");
+	            System.out.println("\nAkara lhe concede uma recompensa por sua bravura.");
+	            System.out.println("Você recebeu: 10 pontos de vida, 5 pontos de mana e 50 moedas de ouro!");
 	        }
 	        
 	        
 		     // Variáveis de dinheiro e inventário
 		        int moeda = 50;
-		        String[][] inventario = new String[10][2]; // [][0] -> nome do item, [][1] -> preço
+		        String[][] inventario = new String[10][2]; // [i][0] -> nome do item, [i][1] -> preço
 		        int numero_itens = 0;
 
 		        System.out.println("\nApós completar a missão 'Den of Evil', você sente uma presença estranha, como se estivesse sendo observado.");
@@ -309,14 +322,13 @@ class Jogo {
 		        System.out.println("Ele oferece poções e outros itens...");
 
 		        // Chama a função para comprar itens
-		        comprar_itens(leitor, inventario, numero_itens, moeda);
+		        comprar_itens(inventario, numero_itens, moeda);
 		    }
         
-	    // Função de compra de itens
-	    public static void comprar_itens(Scanner leitor, String[][] inventario, int numero_itens, int moeda) {
+	    // Método da compra de itens
+	    public static void comprar_itens(String[][] inventario, int numero_itens, int moeda) {
 	        String escolha;
 
-	        // Loop para as compras
 	        do {
 	            System.out.println("\nMercador: 'Eu tenho alguns itens para vender.'");
 	            System.out.println("Itens disponíveis para compra:");
