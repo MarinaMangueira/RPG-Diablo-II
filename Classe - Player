@@ -1,4 +1,4 @@
-package projeto_unidade1;
+package projeto_unidade1_RPG_diablo;
 
 class Player {
     String nome;
@@ -8,8 +8,9 @@ class Player {
     int vida = 20;
     int mana = 5;
 
+    // Construtor da classe player
     public Player(String nome) {
-        this.nome = nome;
+        this.nome = nome; // Só possui o nome, pois inicialmente o jogador só fornece o nome
     }	
 
     public void escolher_classe(char classe) {
@@ -58,4 +59,5 @@ class Player {
         System.out.println(" Habilidade 2: " + hab2);
         System.out.println("--------------------\n");
     }
+    // Criação do personagem concluída 
 }
